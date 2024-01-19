@@ -1,4 +1,3 @@
-// import { HttpError } from "./HttpError.js";
 const HttpError = require("./HttpError.js");
 
 const validateBody = (schema) => {
