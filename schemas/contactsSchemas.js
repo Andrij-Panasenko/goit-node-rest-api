@@ -7,9 +7,9 @@ const createContactSchema = joi.object({
 });
 
 const updateContactSchema = joi.object({
-  name: joi.string().alphanum().min(2).max(30),
-  email: joi.string().email().allow(""),
-  phone: joi.string().min(6).max(15),
+  name: joi.string().empty().alphanum().min(2).max(30),
+  email: joi.string().empty().email().allow(),
+  phone: joi.string().empty().min(6).max(15).allow(),
 });
 
 module.exports = {
