@@ -33,3 +33,23 @@ app.listen(3000, () => {
 // app.get('/old-home', (req, res) => {
 //   res.redirect('/home')
 // })
+
+//-----------------------------------------------------
+
+// const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+dotenv.config()
+
+const { DB_HOST } = process.env;
+console.log("🚀 ~ DB_HOST:", DB_HOST)
+
+
+// mongoose
+//   .connect(DB_HOST)
+//   .then(() => {
+//     console.log("Database connected successfuly");
+//   })
+//   .catch((e) => {
+//     console.log(e.message);
+//     process.exit(1) 
+//   });
