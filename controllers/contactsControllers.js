@@ -12,54 +12,46 @@ const getAllContacts = async (_, res) => {
 
 const getContactById = async (req, res) => {
   const { id } = req.params;
-  const result = await contactsService.getContactById(id);
+  const result = await Contact.findById(id);
   if (!result) throw HttpError(404);
   res.status(200).json(result);
 };
 
 const deleteContact = async (req, res) => {
   const { id } = req.params;
-  const result = await contactsService.removeContact(id);// findByIdAndDelete(id) 
+  const result = await Contact.findByIdAndDelete(id);
   if (!result) throw HttpError(404);
   res.status(200).json(result);
 };
 
 const createContact = async (req, res) => {
-  // const { name, email, phone } = req.body;
+  if (!Object.keys(req.body).length) throw HttpError(400, "Body is empty")
+
   const result = await Contact.create(req.body);
   if (!result) throw HttpError(400);
   res.status(201).json(result);
 };
 
-
-//OLD
-// const createContact = async (req, res) => {
-//   const { name, email, phone } = req.body;
-//   const result = await contactsService.addContact({ name, email, phone });
-//   if (!result) throw HttpError(400);
-//   res.status(201).json(result);
-// };
-
 const updateContact = async (req, res) => {
   const { id } = req.params;
+  console.log(req.body)
 
-  if (req.body === undefined)
-    throw HttpError(400, "Body must have at least one field");
+  if (!Object.keys(req.body).length) throw HttpError(400, "Body must have at least one field");
 
-  const result = await contactsService.updateContact(id, req.body); //findByIdAndUpdate(id, req.body, {new: true})
-  //
+  const result = await Contact.findByIdAndUpdate(id, req.body, {new: true})
   if (!result) throw HttpError(404);
 
   res.status(200).json(result);
 };
 
-// const updateFavorite = async (req,res) => {
-//   const { id } = req.params;
-//   const result = await Contact.findByIdAndUpdate(id);
-//   if (!result) throw HttpError(404)
+const updateFavorite = async (req, res) => {
+  const { id } = req.params;
+  const { favorite } = req.body;
+  const result = await Contact.findByIdAndUpdate(id, favorite, {new: true});
+  if (!result) throw HttpError(404)
 
-//   res.status(200).Json(result)
-// }
+  res.status(200).Json(result)
+}
 
 module.exports = {
   getAllContacts: controllerWrapper(getAllContacts),
@@ -67,5 +59,5 @@ module.exports = {
   deleteContact: controllerWrapper(deleteContact),
   createContact: controllerWrapper(createContact),
   updateContact: controllerWrapper(updateContact),
-  // updateFavorite: controllerWrapper(updateFavorite),
+  updateFavorite: controllerWrapper(updateFavorite),
 };

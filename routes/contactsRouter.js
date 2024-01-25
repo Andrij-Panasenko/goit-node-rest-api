@@ -17,12 +17,16 @@ contactsRouter.post(
   contactsControllers.createContact
 );
 
-// contactsRouter.post('/favorite')
-
 contactsRouter.put(
   "/:id",
   validateBody(validateSchema.updateContactSchema),
   contactsControllers.updateContact
+);
+
+contactsRouter.patch(
+  "/:id/favorite",
+  validateBody(validateSchema.updateFavoriteSchema),
+  contactsControllers.updateFavorite
 );
 
 module.exports = contactsRouter;
