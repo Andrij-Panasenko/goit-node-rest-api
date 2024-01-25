@@ -17,6 +17,8 @@ contactsRouter.post(
   contactsControllers.createContact
 );
 
+// contactsRouter.post('/favorite')
+
 contactsRouter.put(
   "/:id",
   validateBody(validateSchema.updateContactSchema),
