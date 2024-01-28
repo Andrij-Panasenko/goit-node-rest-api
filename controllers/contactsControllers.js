@@ -1,4 +1,3 @@
-const contactsService = require("../services/contactsServices.js");
 const controllerWrapper = require("../helpers/controllerWraper.js");
 const HttpError = require("../helpers/HttpError");
 
