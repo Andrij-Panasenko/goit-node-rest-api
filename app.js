@@ -1,10 +1,25 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+require("dotenv").config();
+
+const mongoose = require("mongoose");
+const { DB_HOST, PORT} = process.env;
 
 const contactsRouter = require("./routes/contactsRouter.js");
 
 const app = express();
+
+mongoose
+  .connect(DB_HOST)
+  .then(() => {
+    app.listen(PORT)
+    console.log("Database connected successfuly");
+  })
+  .catch((err) => {
+    console.log(err.message);
+    process.exit(1);
+  });
 
 app.use(morgan("tiny"));
 app.use(cors());
@@ -17,19 +32,7 @@ app.use((_, res) => {
 });
 
 app.use((err, req, res, next) => {
-  const { status = 500, message = "Server error" } = err;
+  const { status = 500, message = "Server error", name } = err;
   res.status(status).json({ message });
 });
 
-app.listen(3000, () => {
-  console.log("Server is running. Use our API on port: 3000");
-});
-
-// REDIRECT
-// app.get('/home', (req, res) => {
-//   res.send(console.log('home page'))
-// })
-
-// app.get('/old-home', (req, res) => {
-//   res.redirect('/home')
-// })
