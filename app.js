@@ -32,13 +32,7 @@ app.use((_, res) => {
 });
 
 app.use((err, req, res, next) => {
-  const { status = 500, message = "Server error", code, name } = err;
-
-  console.log({ code, name })
-  if (name === "CastError") {
-    res.status(404).json({message})
-  }
-
+  const { status = 500, message = "Server error", name } = err;
   res.status(status).json({ message });
 });
 
