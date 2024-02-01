@@ -22,9 +22,15 @@ const registerSchema = joi.object({
   password: joi.string().min(6).max(18).required()
 });
 
+const loginSchema = joi.object({
+  email: joi.string().email().max(50).required(),
+  password: joi.string().min(6).max(18).required(),
+});
+
 module.exports = {
   createContactSchema,
   updateContactSchema,
   updateFavoriteSchema,
   registerSchema,
+  loginSchema,
 };

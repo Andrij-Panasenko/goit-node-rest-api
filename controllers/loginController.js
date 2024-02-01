@@ -1,6 +1,7 @@
 const User = require("../models/users");
 const HttpError = require("../helpers/HttpError");
 const controllerWrapper = require("../helpers/controllerWraper");
+const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt");
 
 const { SECRET_KEY } = process.env;
