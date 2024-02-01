@@ -2,7 +2,7 @@ const express = require("express");
 const contactsControllers = require("../controllers/contactsControllers.js");
 const validateBody = require("../helpers/validateBody.js");
 const validateSchema = require("../schemas/contactsSchemas.js");
-const isValidId = require("../helpers/isValidId.js");
+const isValidId = require("../middlewears/isValidId.js");
 
 const contactsRouter = express.Router();
 

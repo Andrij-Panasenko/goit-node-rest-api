@@ -18,7 +18,7 @@ const usersSchema = Schema(
     },
     token: String,
   },
-  { versionkKey: false, timestamps: true }
+  { versionKey: false, timestamps: true }
 );
 
 const Users = model("auth", usersSchema);
