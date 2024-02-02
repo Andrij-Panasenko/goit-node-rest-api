@@ -9,8 +9,7 @@ const authenticate = async (req, res, next) => {
   const { authorization = "" } = req.headers;
   const [bearer, token] = authorization.split(" ");
 
-  if (!token) next(HttpError(401, "No token provided"));
-  if (bearer !== "Bearer") next(HttpError(401, "Token type is not valid"));
+  if (bearer !== "Bearer" || !token) next(HttpError(401, "Unauthorized"));
 
   try {
     const { id } = jwt.verify(token, SECRET_KEY);

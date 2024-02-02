@@ -3,8 +3,12 @@ const HttpError = require("../helpers/HttpError");
 
 const Contact = require('../models/contact.js');
 
-const getAllContacts = async (_, res) => {
-  const result = await Contact.find();//запит за всіма даними в колекції
+const getAllContacts = async (req, res) => {
+  //pagination
+  const { page = 1, limit = 20 } = req.query;
+  const skip = (page - 1) * limit;
+
+  const result = await Contact.find().skip(skip).limit(limit); //запит за всіма даними в колекції
   if (!result) throw HttpError(404);
   res.status(200).json(result);
 };
