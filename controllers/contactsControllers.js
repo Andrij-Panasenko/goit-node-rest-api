@@ -5,10 +5,13 @@ const Contact = require('../models/contact.js');
 
 const getAllContacts = async (req, res) => {
   //pagination
-  const { page = 1, limit = 20 } = req.query;
+  const { page = 1, limit = 20, favorite } = req.query;
   const skip = (page - 1) * limit;
 
-  const result = await Contact.find().skip(skip).limit(limit); //запит за всіма даними в колекції
+  //filtration by favorite or return all contacts
+  const filter = favorite ? { favorite: favorite === 'true' } : {};
+
+  const result = await Contact.find(filter).skip(skip).limit(limit); //запит за всіма даними в колекції
   if (!result) throw HttpError(404);
   res.status(200).json(result);
 };
