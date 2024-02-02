@@ -1,7 +1,7 @@
-const HttpError = require("../helpers/HttpError");
-const User = require("../models/users");
+const HttpError = require("../../helpers/HttpError");
+const User = require("../../models/users");
 
-const logOut = async (req, res, next) => {
+const logoutUser = async (req, res, next) => {
   const { id } = req.body;
 
   try {
@@ -16,5 +16,4 @@ const logOut = async (req, res, next) => {
   }
 };
 
-module.exports = logOut;
-
+module.exports = logoutUser;

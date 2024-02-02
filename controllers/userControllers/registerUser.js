@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
-const Users = require("../models/users");
-const HttpError = require("../helpers/HttpError");
+const Users = require("../../models/users");
+const HttpError = require("../../helpers/HttpError");
 
 
-const createUser = async (req, res, next) => {
+const registerUser = async (req, res, next) => {
   const { email, password } = req.body;
   const hashedPsw = await bcrypt.hash(password, 10);
   
@@ -17,4 +17,4 @@ const createUser = async (req, res, next) => {
   }
 };
 
-module.exports = createUser;
+module.exports = registerUser;

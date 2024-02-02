@@ -1,10 +1,14 @@
 const express = require("express");
-const createUser = require('../../controllers/registerController');
+const { registerUser } = require("../../controllers/userControllers");
 const validateBody = require("../../helpers/validateBody");
-const validateSchema = require("../../schemas/contactsSchemas")
+const validateSchema = require("../../schemas/contactsSchemas");
 
 const registerRouter = express.Router();
 
-registerRouter.post("/", validateBody(validateSchema.registerSchema), createUser);
+registerRouter.post(
+  "/",
+  validateBody(validateSchema.registerSchema),
+  registerUser
+);
 
 module.exports = registerRouter;
