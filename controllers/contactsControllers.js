@@ -40,7 +40,6 @@ const createContact = async (req, res) => {
 
 const updateContact = async (req, res) => {
   const { id } = req.params;
-  console.log(req.body)
 
   if (!Object.keys(req.body).length) throw HttpError(400, "Body must have at least one field");
 
