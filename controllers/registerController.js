@@ -1,11 +1,7 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const controllerWrapper = require("../helpers/controllerWraper");
 const Users = require("../models/users");
 const HttpError = require("../helpers/HttpError");
 
-//перевіряємо чи є юзер з таким мейлом в базі
-//хешуємо пароль
 
 const createUser = async (req, res, next) => {
   const { email, password } = req.body;

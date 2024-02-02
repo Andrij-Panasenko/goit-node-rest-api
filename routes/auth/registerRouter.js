@@ -5,6 +5,6 @@ const validateSchema = require("../../schemas/contactsSchemas")
 
 const registerRouter = express.Router();
 
-registerRouter.post("/", validateBody(validateSchema.registerSchema), createUser);//registe
+registerRouter.post("/", validateBody(validateSchema.registerSchema), createUser);
 
 module.exports = registerRouter;
