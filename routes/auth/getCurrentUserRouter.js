@@ -1,9 +1,9 @@
-const express = require("express");
-const { getCurrentUser } = require('../../controllers/userControllers')
-const { authenticate } = require('../../middlewears')
+// const express = require("express");
+// const { getCurrentUser } = require('../../controllers/userControllers')
+// const { authenticate } = require('../../middlewears')
 
-const getCurrentUserRouter = express.Router();
+// const getCurrentUserRouter = express.Router();
 
-getCurrentUserRouter.get("/", authenticate, getCurrentUser);
+// getCurrentUserRouter.get("/", authenticate, getCurrentUser);
 
-module.exports = getCurrentUserRouter
+// module.exports = getCurrentUserRouter

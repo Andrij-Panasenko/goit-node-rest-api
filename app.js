@@ -7,12 +7,13 @@ const mongoose = require("mongoose");
 const { DB_HOST, PORT } = process.env;
 
 const contactsRouter = require("./routes/contactsRouter.js");
-const {
-  registerRouter,
-  loginRouter,
-  logoutRouter,
-  getCurrentUserRouter,
-} = require("./routes/auth");
+const userRouter = require('./routes/userRouter')
+// const {
+//   registerRouter,
+//   loginRouter,
+//   logoutRouter,
+//   getCurrentUserRouter,
+// } = require("./routes/auth");
 
 const app = express();
 
@@ -33,10 +34,11 @@ app.use(express.json()); //підключення парсеру жсон фор
 
 //endpoints
 app.use("/api/contacts", contactsRouter);
-app.use("/api/users/register", registerRouter);
-app.use("/api/users/login", loginRouter);
-app.use("/api/users/logout", logoutRouter);
-app.use("/api/users/current", getCurrentUserRouter);
+app.use("/api/users", userRouter)
+// app.use("/api/users/register", registerRouter);
+// app.use("/api/users/login", loginRouter);
+// app.use("/api/users/logout", logoutRouter);
+// app.use("/api/users/current", getCurrentUserRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

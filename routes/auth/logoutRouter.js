@@ -1,9 +1,9 @@
-const express = require("express");
-const { logoutUser } = require("../../controllers/userControllers");
-const { authenticate } = require("../../middlewears");
+// const express = require("express");
+// const { logoutUser } = require("../../controllers/userControllers");
+// const { authenticate } = require("../../middlewears");
 
-const logoutRouter = express.Router();
+// const logoutRouter = express.Router();
 
-logoutRouter.post("/", authenticate, logoutUser);
+// logoutRouter.post("/", authenticate, logoutUser);
 
-module.exports = logoutRouter;
+// module.exports = logoutRouter;
