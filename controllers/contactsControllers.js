@@ -4,6 +4,7 @@ const HttpError = require("../helpers/HttpError");
 const Contact = require('../models/contact.js');
 
 const getAllContacts = async (req, res) => {
+  console.log(req.user)
   //pagination
   const { page = 1, limit = 20, favorite } = req.query;
   const skip = (page - 1) * limit;
