@@ -26,6 +26,8 @@ app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json()); //підключення парсеру жсон формату
 
+app.use(express.static("public"))
+
 //endpoints
 app.use("/api/contacts", contactsRouter);
 app.use("/api/users", userRouter)
