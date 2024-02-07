@@ -2,11 +2,13 @@ const controllerWrapper = require("../../helpers/controllerWraper");
 const path = require("path");
 const fs = require("fs/promises");
 const User = require("../../models/users");
+const HttpError = require("../../helpers/HttpError");
 
 const avatarsDir = path.join(__dirname, "../../", "public", "avatars");
 
-const updateAvatar = async (req, res, _) => {
+const updateAvatar = async (req, res, next) => {
   const { _id } = req.user;
+    if (!req.file) next(HttpError(400, "No upload images"));
 
   const { path: tempUpload, originalname } = req.file;
   const filename = `${_id}_${originalname}`;
