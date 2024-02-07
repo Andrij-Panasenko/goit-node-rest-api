@@ -26,7 +26,7 @@ userRouter.get("/current", authenticate, getCurrentUser);
 
 userRouter.patch(
   "/avatars",
-  // authenticate,
+  authenticate,
   upload.single("avatar"),
   uptadeAvatar
 );
