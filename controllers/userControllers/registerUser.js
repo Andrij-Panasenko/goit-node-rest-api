@@ -9,10 +9,13 @@ const registerUser = async (req, res, next) => {
   const hashedPsw = await bcrypt.hash(password, 10);
   
   try {
-    const avatar = gravatar.url(email, {s: "200"})
-    const result = await Users.create({ email, password: hashedPsw, avatar });
-    console.log(result.avatar)
-    res.status(201).json({id: result._id, email, avatarURL: avatar});
+    const avatarURL = gravatar.url(email, {s: "200"})
+    const result = await Users.create({
+      email,
+      password: hashedPsw,
+      avatarURL,
+    });
+    res.status(201).json({ id: result._id, email, avatarURL });
   } catch (error) {
     if (error.message.includes("E11000")) {
       next(HttpError(409, "Not valid email"));
