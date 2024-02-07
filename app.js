@@ -7,8 +7,7 @@ const mongoose = require("mongoose");
 const { DB_HOST, PORT } = process.env;
 
 const contactsRouter = require("./routes/contactsRouter.js");
-const userRouter = require('./routes/userRouter')
-
+const userRouter = require("./routes/userRouter");
 
 const app = express();
 
