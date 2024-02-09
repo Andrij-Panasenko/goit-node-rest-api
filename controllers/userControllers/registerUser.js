@@ -9,7 +9,7 @@ const registerUser = async (req, res, next) => {
   const hashedPsw = await bcrypt.hash(password, 10);
   
   try {
-    const avatarURL = gravatar.url(email, {s: "200"})
+    const avatarURL = gravatar.url(email, {s: "300"})
     const result = await Users.create({
       email,
       password: hashedPsw,
