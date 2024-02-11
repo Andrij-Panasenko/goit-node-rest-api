@@ -7,8 +7,7 @@ const mongoose = require("mongoose");
 const { DB_HOST, PORT } = process.env;
 
 const contactsRouter = require("./routes/contactsRouter.js");
-const userRouter = require('./routes/userRouter')
-
+const userRouter = require("./routes/userRouter");
 
 const app = express();
 
@@ -26,6 +25,8 @@ mongoose
 app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json()); //підключення парсеру жсон формату
+
+app.use(express.static("public"))
 
 //endpoints
 app.use("/api/contacts", contactsRouter);
