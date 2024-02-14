@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const Users = require("../../models/users");
 const HttpError = require("../../helpers/HttpError");
 const gravatar = require("gravatar");
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 const sendEmail = require("../../helpers/sendEmail");
 require("dotenv").config();
 

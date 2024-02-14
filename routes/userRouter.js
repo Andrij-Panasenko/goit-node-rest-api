@@ -7,7 +7,7 @@ const {
   logoutUser,
   getCurrentUser,
   uptadeAvatar,
-  verifyUserEmail,
+  verifyUserEmail
 } = require("../controllers/userControllers");
 const { authenticate, upload } = require("../middlewears");
 
