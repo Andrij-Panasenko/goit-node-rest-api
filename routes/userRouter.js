@@ -7,7 +7,8 @@ const {
   logoutUser,
   getCurrentUser,
   uptadeAvatar,
-  verifyUserEmail
+  verifyUserEmail,
+  resendEmailVerification
 } = require("../controllers/userControllers");
 const { authenticate, upload } = require("../middlewears");
 
@@ -33,5 +34,7 @@ userRouter.patch(
 );
 
 userRouter.get("/verify/:verificationToken", verifyUserEmail)
+
+userRouter.post("/verify", validateBody(validateSchema.verifyEmailSchema), resendEmailVerification );
 
 module.exports = userRouter;

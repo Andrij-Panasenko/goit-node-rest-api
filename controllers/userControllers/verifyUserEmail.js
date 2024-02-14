@@ -7,7 +7,7 @@ const verifyUserEmail = async (req, res) => {
 
     const user = await Users.findOne({ verificationToken });
 
-    if (!user) HttpError(404, "User not found")
+    if (!user) throw HttpError(404, "User not found");
 
     await Users.findByIdAndUpdate(user._id, {
       isVerifyed: true,
