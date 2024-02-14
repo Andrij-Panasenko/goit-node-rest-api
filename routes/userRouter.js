@@ -7,6 +7,7 @@ const {
   logoutUser,
   getCurrentUser,
   uptadeAvatar,
+  verifyUserEmail,
 } = require("../controllers/userControllers");
 const { authenticate, upload } = require("../middlewears");
 
@@ -30,5 +31,7 @@ userRouter.patch(
   upload.single("avatar"),
   uptadeAvatar
 );
+
+userRouter.get("/verify/:verificationToken", verifyUserEmail)
 
 module.exports = userRouter;
